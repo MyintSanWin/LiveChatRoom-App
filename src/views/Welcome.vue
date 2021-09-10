@@ -1,7 +1,15 @@
 <template>
   <div class="welcome container">
-      <Signup/>
-      <Login/>
+      <div v-if="showLoginForm"> 
+        <Login/>
+        <p>not a member?<span @click="showLoginForm=!showLoginForm"> create account</span></p>
+      </div>
+      <div v-else>
+         <Signup/>
+         <p>Already member? <span @click="showLoginForm=!showLoginForm"> Login Account?</span></p>
+      </div>
+     
+    
       
   </div>
 </template>
@@ -12,7 +20,11 @@ import Signup from '../components/Signup.vue'
 import Login from '../components/Login.vue'
 export default {
   components: { Signup,Login },
+  setup(){
+    let showLoginForm=ref(true)
 
+    return {showLoginForm}
+  }
   
 
 }
