@@ -5,6 +5,7 @@
 
             <input type="email" placeholder=" email" v-model="email">
             <input type="password" placeholder="password" v-model="password">
+            <div class="error" v-if="error">{{error}}</div>
             <button>Login</button>
         </form>
   
@@ -12,17 +13,21 @@
 
 <script>
 import { ref } from '@vue/reactivity'
-import Login from '../components/Signup.vue'
+import useLogin from '../composables/useLogin'
 export default {
-  components: { Login },
+ 
   setup(){
-     
+
       let email=ref("");
       let password=ref("");
-     let Login=()=>{
-         console.log(displayName.value,email.value,password.value)
+      let{error,signIn} = useLogin()
+     let Login=async()=>{
+      let res= await signIn(email.value,password.value)
+      if(res){
+          console.log(res.user)
+      }
      }
-      return {email,password,Login}
+      return {email,password,Login,error}
   }
   
 
