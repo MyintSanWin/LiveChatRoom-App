@@ -25,6 +25,7 @@ export default {
            if(!res){
                throw new Error("could notcreate new user")
            }
+           res.user.updateProfile({displayName:displayName.value})
  }
  catch(err){
        error.value=err.message;
