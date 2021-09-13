@@ -18,7 +18,7 @@ const routes = [
       if(user){
         next();
       }else{
-        next({name:"/Welcome"});
+        next({name:"Welcome"});
       }
     }
 
