@@ -1,5 +1,5 @@
 <template>
-  <nav v-if="user">
+  <nav v-show="user">
       <div>
           <p>Hi {{user.displayName}}</p>
           <p class="email">logged in as {{user.email}}</p>
