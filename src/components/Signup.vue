@@ -11,8 +11,7 @@
 </template>
 
 <script>
-import { ref } from '@vue/reactivity'
-
+import { ref } from '@vue/reactivity';
 import userSignup from '../composables/useSignup'
 export default {
 

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { ref } from '@vue/reactivity'
+import { ref } from '@vue/reactivity';
 import useLogin from '../composables/useLogin'
 export default {
  
@@ -20,8 +20,8 @@ export default {
 
       let email=ref("");
       let password=ref("");
-      let{error,signIn} = useLogin()
-     let Login=async()=>{
+      let{error,signIn} = useLogin();
+      let Login=async()=>{
       let res= await signIn(email.value,password.value)
       if(res){
           context.emit('enterChatroom')

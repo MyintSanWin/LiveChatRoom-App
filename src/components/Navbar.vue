@@ -19,7 +19,7 @@ export default {
 
         let logout=async()=>{
           try{
-              await  auth.signOut()
+              await auth.signOut()
           console.log("user logged out")
           }
           catch(err){
