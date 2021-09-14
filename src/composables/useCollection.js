@@ -1,15 +1,14 @@
 
 import {ref} from '@vue/reactivity'
-import {db} from '../firebase/config'
-
-let useCollection=(messages)=>{
-    let error =ref(null);
+import {db} from "../firebase/config"
+let useCollection=(collection)=>{
+    let error=ref(null);
     let addDoc=async(doc)=>{
         try{
-          await db.collection("messages").add(doc);
+           await  db.collection(collection).add(doc);
         }catch(err){
             console.log(err.message);
-            error.value="could not send the message ";
+            error.value="could not send the message";
         }
     }
     return {error,addDoc}

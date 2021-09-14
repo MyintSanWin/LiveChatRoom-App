@@ -8,6 +8,6 @@ import {auth} from '../firebase/config'
    })
 let getUser=()=>{
  
-return{user}
+return{user};
 }
 export default getUser;

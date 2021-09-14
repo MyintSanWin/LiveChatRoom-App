@@ -7,12 +7,13 @@
 </template>
 
 <script>
-import { watch } from '@vue/runtime-core'
+
 import Navbar from '../components/Navbar.vue'
 import getUser from '../composables/getUser'
 import {useRouter} from 'vue-router'
 import NewChatForm from '../components/NewChatForm.vue'
 import ChatWindow from '../components/ChatWindow.vue'
+import { watch } from '@vue/runtime-core'
 export default {
   components: { Navbar ,NewChatForm, ChatWindow},
   setup(){
@@ -21,7 +22,7 @@ export default {
     watch(user,()=>{
       if(!user.value){
         // redirect welcome
-      router.push({name:'Welcome'});
+      router.push('/');
       }
     })
   }

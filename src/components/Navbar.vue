@@ -1,5 +1,5 @@
 <template>
-  <nav v-show="user">
+  <nav v-if="user">
       <div>
           <p>Hi {{user.displayName}}</p>
           <p class="email">logged in as {{user.email}}</p>
@@ -14,7 +14,7 @@ import getUser from '../composables/getUser'
 import { auth } from '../firebase/config';
 export default {
     setup(){
-        let error=ref('');
+        let error=ref(null)
         let{user}=getUser();
 
         let logout=async()=>{
@@ -24,7 +24,7 @@ export default {
           }
           catch(err){
               error.value=err.message;
-              console.log(error.value)
+              console.log(err.value)
           }
         }
          

@@ -23,7 +23,8 @@ export default {
 
             }
           await addDoc(chat);
-            message.value="";
+             message.value="";
+        
         }
         return {message,handleSubmit};
     }

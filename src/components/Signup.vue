@@ -19,11 +19,13 @@ export default {
       let displayName=ref("");
       let email=ref("");
       let password=ref("");
-      let {error,createAccount}=userSignup()
+      
+      let  {error,createAccount}=useSignup()
       let signUp=async()=>{
       let res=  await createAccount(email.value,password.value,displayName.value)
        if(res){
-           context.emit('enterChatroom')
+        context.emit('enterChatroom')
+       
        }
        
      }

@@ -13,6 +13,7 @@
 
 <script>
 import { ref } from '@vue/reactivity';
+import {auth} from '../firebase/config'
 import useLogin from '../composables/useLogin'
 export default {
  
