@@ -1,8 +1,8 @@
 <template>
 <div class="chat-window">
-        <div class="messages">
+        <div class="messages" ref="msgBox" style="overflow-y:scroll; height:600px;">
             <div class="single" v-for="message in formattedMessages" :key="message.id">
-    <span class="created-at">{{message.created_at}}</span>
+                <span class="created-at">{{message.created_at}}</span>
                 <span class="name">{{message.name}}</span>
                 <span class="message">{{message.message}}</span>
             </div>
@@ -14,9 +14,18 @@
 import { computed, ref } from '@vue/reactivity'
 import {db} from '../firebase/config'
 import {formatDistanceToNow} from "date-fns"
+import { onUpdated } from '@vue/runtime-core'
 export default {
     setup(){
              let messages=ref([]);
+             let msgBox=ref(null);
+
+            //auto scrolling feature
+            onUpdated(()=>{
+               msgBox.value.scrollTop=msgBox.value.scrollHeight;
+            })
+
+
              let formattedMessages=computed(()=>{
                  return messages.value.map((msg)=>{
                      let formatTime=formatDistanceToNow(msg.created_at.toDate());
@@ -29,7 +38,6 @@ export default {
                     console.log(snap);
                    snap.docs.forEach((doc)=>{
                      let document={...doc.data(),id:doc.id}
-               
                         // if(doc.data().created_at){
                         //     results.push(document);
                         // }same work following code 
@@ -37,14 +45,14 @@ export default {
                      })
                     messages.value=results;
             })
-            return {messages,formattedMessages}
+            return {messages,formattedMessages,msgBox}
     }
 }
 </script>
 
 <style>
 .chat-window{
-    background:#8eff;
+    background:rgb(131, 148, 151);
     padding: 30px 20px;
 }
 .single{
